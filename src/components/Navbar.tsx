@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDownToLine, Moon, Sun, Menu, X } from 'lucide-react';
+import { ArrowDownToLine, Menu, X } from 'lucide-react';
 import { USER_INFO } from '../data/portfolioData';
 
 interface NavbarProps {
@@ -28,7 +28,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onResumeClick, onContactClick })
   const [isFullWidth, setIsFullWidth] = useState(false);
   const [activeTab, setActiveTab] = useState<TabType>('Home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -108,11 +107,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onResumeClick, onContactClick })
     }
   };
 
-  const toggleTheme = () => {
-    setIsDarkMode((prev) => !prev);
-    document.documentElement.classList.toggle('light');
-  };
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 flex flex-col items-center pointer-events-none transition-all duration-300 ease-out ${
@@ -136,32 +130,33 @@ export const Navbar: React.FC<NavbarProps> = ({ onResumeClick, onContactClick })
             e.preventDefault();
             handleNavClick('Home', '#hero');
           }}
-          aria-label="Home — Varun Surya"
+          aria-label="Home — Tharun Reddy"
           className="group flex items-center gap-2.5 sm:gap-3 shrink-0 select-none cursor-pointer"
         >
-          {/* Stylized Architectural Monogram V with Metallic Gradient Sheen */}
+          {/* Stylized Architectural Monogram T with Metallic Gradient Sheen */}
           <div className="relative flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/15 group-hover:border-[#89AACC]/50 transition-all duration-300 shrink-0 shadow-sm">
             <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-4.5 sm:h-4.5" fill="none">
               <defs>
-                <linearGradient id="v-sheen-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <linearGradient id="t-sheen-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor="#89AACC" />
                   <stop offset="45%" stopColor="#FFFFFF" />
                   <stop offset="100%" stopColor="#4E85BF" />
                 </linearGradient>
               </defs>
               <path
-                d="M4 4L11.5 20C11.7 20.4 12.3 20.4 12.5 20L20 4"
-                stroke="url(#v-sheen-grad)"
-                strokeWidth="2.75"
+                d="M4 6H20M12 6V20"
+                stroke="url(#t-sheen-grad)"
+                strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
-                d="M7 5L12 15.5L17 5"
+                d="M14 10H18.5C19.9 10 21 11.1 21 12.5C21 13.9 19.9 15 18.5 15H15M18 15L21 20"
                 stroke="#FFFFFF"
                 strokeWidth="1.2"
                 strokeLinecap="round"
-                opacity="0.3"
+                strokeLinejoin="round"
+                opacity="0.5"
               />
             </svg>
           </div>
@@ -172,7 +167,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onResumeClick, onContactClick })
               {USER_INFO.shortName}
             </span>
             <span className="hidden sm:inline text-[10px] font-mono uppercase tracking-[0.18em] text-muted/60">
-              — PRODUCT DESIGNER
+              — SOFTWARE ENGINEER
             </span>
           </div>
         </a>
@@ -207,12 +202,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onResumeClick, onContactClick })
         {/* 3. Right Section: Resume Button + Moon/Theme Toggle + Mobile Hamburger */}
         <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           {/* Resume Pill Button (Clean, crisp without glow or grow scaling) */}
-          <a
-            href={USER_INFO.resumeUrl || 'https://drive.google.com/'}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={() => {
+              if (onResumeClick) {
+                onResumeClick();
+              } else if (USER_INFO.resumeUrl && USER_INFO.resumeUrl !== '#') {
+                window.open(USER_INFO.resumeUrl, '_blank');
+              }
+            }}
             aria-label="Download / View Resume"
-            className="group relative inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#89AACC] to-[#4E85BF] hover:brightness-110 px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-white transition-all duration-200 shadow-sm"
+            className="group relative inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#89AACC] to-[#4E85BF] hover:brightness-110 px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-white transition-all duration-200 shadow-sm cursor-pointer"
           >
             <ArrowDownToLine
               size={14}
@@ -220,20 +220,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onResumeClick, onContactClick })
               className="transition-transform duration-200 group-hover:translate-y-0.5"
             />
             <span>Resume</span>
-          </a>
-
-          {/* Theme Toggle Button */}
-          <button
-            type="button"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/[0.04] hover:bg-white/[0.08] active:bg-white/15 border border-white/10 text-muted hover:text-white transition-all duration-200"
-          >
-            {isDarkMode ? (
-              <Moon size={14} className="text-[#89AACC]" />
-            ) : (
-              <Sun size={14} className="text-amber-300" />
-            )}
           </button>
 
           {/* Mobile Menu Hamburger Toggle (Visible on Mobile) */}
@@ -297,24 +283,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onResumeClick, onContactClick })
                   );
                 })}
 
-                <div className="h-px bg-white/10 my-1 mx-2" />
-
-                {/* Theme toggle option in mobile menu */}
-                <button
-                  type="button"
-                  onClick={toggleTheme}
-                  className="w-full flex items-center justify-between px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium text-muted hover:text-text-primary hover:bg-white/5 transition-all"
-                >
-                  <span className="flex items-center gap-2">
-                    {isDarkMode ? (
-                      <Moon size={14} className="text-[#89AACC]" />
-                    ) : (
-                      <Sun size={14} className="text-amber-300" />
-                    )}
-                    <span>{isDarkMode ? 'Dark Theme' : 'Light Theme'}</span>
-                  </span>
-                  <span className="text-[10px] font-mono uppercase text-muted/60">Toggle</span>
-                </button>
               </div>
             </motion.div>
           </>

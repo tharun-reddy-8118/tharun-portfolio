@@ -1,16 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
-import { MailIcon, LinkedinIcon, BehanceIcon } from './Icons';
-import { CONTACT_INFO } from '../data/portfolioData';
+import { MailIcon, LinkedinIcon, GithubIcon, PhoneIcon } from './Icons';
+import { USER_INFO, CONTACT_INFO } from '../data/portfolioData';
 
-const MARQUEE_TEXT = 'DESIGNING CALM, HUMAN-FIRST EXPERIENCES • '.repeat(8);
+const MARQUEE_TEXT = 'ENGINEERING SCALABLE BACKENDS • DISTRIBUTED DATA PIPELINES • HIGH-THROUGHPUT APIS • '.repeat(6);
 
 const SOCIAL_LINKS = [
-  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/varunsuryavemula' },
-  { name: 'Behance', url: 'https://www.behance.net/varunsurya1' },
-  { name: 'GitHub', url: 'https://github.com/varunsurya' },
-  { name: 'Email', url: 'mailto:ux.varunsurya@gmail.com' },
+  { name: 'LinkedIn', url: USER_INFO.socials.linkedin },
+  { name: 'GitHub', url: USER_INFO.socials.github },
+  { name: 'Email', url: USER_INFO.socials.email },
+  { name: 'Call', url: USER_INFO.socials.phone },
 ];
 
 export const Footer: React.FC = () => {
@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
 
     const anim = gsap.to(marqueeTrack, {
       xPercent: -50,
-      duration: 40,
+      duration: 38,
       ease: 'none',
       repeat: -1,
     });
@@ -44,10 +44,10 @@ export const Footer: React.FC = () => {
       {/* GSAP Infinite Marquee Banner */}
       <div className="relative z-10 w-full overflow-hidden py-4 sm:py-6 border-y border-white/5 backdrop-blur-[2px]">
         <div ref={marqueeTrackRef} className="flex whitespace-nowrap w-max will-change-transform">
-          <span className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-display italic tracking-widest text-white/[0.07] uppercase select-none px-4">
+          <span className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display italic tracking-widest text-white/[0.07] uppercase select-none px-4">
             {MARQUEE_TEXT}
           </span>
-          <span className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-display italic tracking-widest text-white/[0.07] uppercase select-none px-4">
+          <span className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display italic tracking-widest text-white/[0.07] uppercase select-none px-4">
             {MARQUEE_TEXT}
           </span>
         </div>
@@ -65,68 +65,79 @@ export const Footer: React.FC = () => {
         <div className="flex items-center gap-3 mb-6">
           <span className="w-8 h-px bg-stroke" />
           <span className="text-xs text-muted uppercase tracking-[0.3em] font-medium">
-            Get in Touch
+            {CONTACT_INFO.badge}
           </span>
           <span className="w-8 h-px bg-stroke" />
         </div>
 
         {/* Heading: Editorial sans + Instrument Serif italic accent gradient */}
         <h2 className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl text-text-primary tracking-tight font-light max-w-4xl mb-6 leading-[1.08]">
-          Let&apos;s build{' '}
+          {CONTACT_INFO.titlePrefix}
           <span className="font-display italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#89AACC] to-[#4E85BF]">
-            meaningful
+            {CONTACT_INFO.titleHighlight}
           </span>
-          <br className="hidden sm:inline" /> digital experiences together.
+          <br className="hidden sm:inline" /> {CONTACT_INFO.titleSuffix}
         </h2>
 
         {/* Subtitle Description */}
         <p className="text-xs sm:text-sm md:text-base text-muted font-light leading-relaxed max-w-lg mx-auto mb-10 sm:mb-12">
-          I&apos;m currently open to product design roles and select freelance collaborations in healthcare
-          <br className="hidden sm:inline" /> and enterprise. Drop a note &mdash; I read every email.
+          {CONTACT_INFO.description}
         </p>
 
         {/* Action Buttons Row using site's pill + glow ring system */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 max-w-full">
-          {/* Primary Email Button (Solid Pill with Accent Glow Ring) */}
+          {/* Primary Email Button */}
           <a
-            href="mailto:ux.varunsurya@gmail.com"
+            href={USER_INFO.socials.email}
             className="group relative inline-flex items-center justify-center rounded-full text-xs sm:text-base font-medium p-[1.5px] transition-transform duration-300 hover:scale-105"
           >
             <span className="absolute inset-0 rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[1px]" />
             <span className="relative z-10 inline-flex items-center gap-2 sm:gap-2.5 rounded-full px-5 sm:px-7 py-3 sm:py-3.5 bg-text-primary text-bg group-hover:bg-bg group-hover:text-text-primary transition-colors duration-300 font-medium">
-              <MailIcon size={16} className="currentColor shrink-0" />
-              <span className="break-all sm:break-normal">ux.varunsurya@gmail.com</span>
+              <MailIcon size={16} className="shrink-0" />
+              <span className="break-all sm:break-normal">{USER_INFO.email}</span>
               <span className="text-xs sm:text-base transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                 ↗
               </span>
             </span>
           </a>
 
-          {/* Secondary LinkedIn Button (Surface Pill with Accent Glow Ring) */}
+          {/* Secondary Phone Button */}
           <a
-            href="https://www.linkedin.com/in/varunsuryavemula"
+            href={USER_INFO.socials.phone}
+            className="group relative inline-flex items-center justify-center rounded-full text-xs sm:text-base font-medium p-[1.5px] transition-transform duration-300 hover:scale-105"
+          >
+            <span className="absolute inset-0 rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[1px]" />
+            <span className="relative z-10 inline-flex items-center gap-2 sm:gap-2.5 rounded-full px-4 sm:px-6 py-2.5 sm:py-3.5 bg-surface border border-stroke text-text-primary group-hover:border-transparent transition-colors duration-300 font-medium">
+              <PhoneIcon size={16} className="text-[#89AACC] shrink-0" />
+              <span>{USER_INFO.phone}</span>
+            </span>
+          </a>
+
+          {/* Secondary LinkedIn Button */}
+          <a
+            href={USER_INFO.socials.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex items-center justify-center rounded-full text-xs sm:text-base font-medium p-[1.5px] transition-transform duration-300 hover:scale-105"
           >
             <span className="absolute inset-0 rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[1px]" />
             <span className="relative z-10 inline-flex items-center gap-2 sm:gap-2.5 rounded-full px-4 sm:px-6 py-2.5 sm:py-3.5 bg-surface border border-stroke text-text-primary group-hover:border-transparent transition-colors duration-300 font-medium">
-              <LinkedinIcon size={16} className="text-text-primary shrink-0" />
+              <LinkedinIcon size={16} className="text-[#89AACC] shrink-0" />
               <span>LinkedIn</span>
             </span>
           </a>
 
-          {/* Secondary Behance Button (Surface Pill with Accent Glow Ring) */}
+          {/* Secondary GitHub Button */}
           <a
-            href="https://www.behance.net/varunsurya1"
+            href={USER_INFO.socials.github}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex items-center justify-center rounded-full text-xs sm:text-base font-medium p-[1.5px] transition-transform duration-300 hover:scale-105"
           >
             <span className="absolute inset-0 rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[1px]" />
             <span className="relative z-10 inline-flex items-center gap-2 sm:gap-2.5 rounded-full px-4 sm:px-6 py-2.5 sm:py-3.5 bg-surface border border-stroke text-text-primary group-hover:border-transparent transition-colors duration-300 font-medium">
-              <BehanceIcon size={16} className="text-text-primary shrink-0" />
-              <span>Behance</span>
+              <GithubIcon size={16} className="text-[#89AACC] shrink-0" />
+              <span>GitHub</span>
             </span>
           </a>
         </div>
@@ -141,7 +152,7 @@ export const Footer: React.FC = () => {
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
           </span>
           <span className="text-xs sm:text-sm text-text-primary/90 font-medium">
-            Available for product design roles &amp; collaborations
+            Available for Software Engineering opportunities &amp; backend roles
           </span>
         </div>
 
@@ -162,10 +173,11 @@ export const Footer: React.FC = () => {
 
         {/* Right Info */}
         <div className="text-xs text-muted/60 font-mono">
-          &copy; {new Date().getFullYear()} Varun Surya Vemula &bull; Hyderabad, IN
+          &copy; {new Date().getFullYear()} {USER_INFO.name} &bull; {USER_INFO.location}
         </div>
       </div>
     </footer>
   );
 };
 
+export default Footer;

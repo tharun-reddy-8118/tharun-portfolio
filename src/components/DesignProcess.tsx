@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Search, PenTool, Layers, FlaskConical, Sparkles, ArrowRight } from 'lucide-react';
+import { Database, Server, GitBranch, Zap, BarChart3, ArrowRight } from 'lucide-react';
 
 interface ProcessStep {
   num: string;
@@ -9,36 +9,36 @@ interface ProcessStep {
   icon: React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>;
 }
 
-export const DESIGN_PROCESS_STEPS: ProcessStep[] = [
+export const ENGINEERING_STEPS: ProcessStep[] = [
   {
     num: '01',
-    title: 'Research',
-    desc: 'Interviews, shadowing, surveys, synthesis.',
-    icon: Search,
+    title: 'Architecture',
+    desc: 'Domain modeling, ER schemas & API contracts.',
+    icon: Database,
   },
   {
     num: '02',
-    title: 'Wireframe',
-    desc: 'Low-fi flows, IA, journey mapping.',
-    icon: PenTool,
+    title: 'APIs & Services',
+    desc: 'FastAPI microservices, Strawberry GraphQL & JWT auth.',
+    icon: Server,
   },
   {
     num: '03',
-    title: 'Prototype',
-    desc: 'Interactive mockups in Figma / XD.',
-    icon: Layers,
+    title: 'ETL & Ingestion',
+    desc: 'PySpark on Azure Databricks & DuckDB querying.',
+    icon: GitBranch,
   },
   {
     num: '04',
-    title: 'Testing',
-    desc: 'Usability, heuristic & A/B studies.',
-    icon: FlaskConical,
+    title: 'Optimization',
+    desc: 'Query indexing, connection pooling & 30% latency cut.',
+    icon: Zap,
   },
   {
     num: '05',
-    title: 'Final UI',
-    desc: 'Visual design, motion & dev handoff.',
-    icon: Sparkles,
+    title: 'MIS & Deploy',
+    desc: 'Docker, Azure deployment & 18+ Tableau dashboards.',
+    icon: BarChart3,
   },
 ];
 
@@ -64,26 +64,26 @@ export const DesignProcess: React.FC = () => {
           <div className="flex items-center gap-3 mb-6">
             <span className="w-8 h-px bg-stroke" />
             <span className="text-xs text-muted uppercase tracking-[0.3em] font-medium">
-              Design Process
+              Engineering Lifecycle
             </span>
           </div>
 
           {/* Heading with Instrument Serif italic accent gradient */}
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-light text-text-primary tracking-tight leading-[1.08] mb-4">
-            From a hunch to a{' '}
+            From architecture to a{' '}
             <span className="font-display italic text-transparent bg-clip-text bg-gradient-to-r from-[#89AACC] to-[#4E85BF]">
-              shipped product.
+              production system.
             </span>
           </h2>
 
           <p className="text-sm md:text-base text-muted font-light leading-relaxed max-w-xl">
-            A structured yet adaptive framework turning complex ambiguities into clear, measurable user outcomes.
+            A structured, resilient engineering methodology turning complex healthcare requirements into fault-tolerant, high-performance services.
           </p>
         </motion.div>
 
         {/* Desktop Layout (≥1024px): 5-step horizontal progression with connecting arrows */}
         <div className="hidden lg:flex items-start justify-between gap-2">
-          {DESIGN_PROCESS_STEPS.map((step, idx) => {
+          {ENGINEERING_STEPS.map((step, idx) => {
             const Icon = step.icon;
             return (
               <React.Fragment key={step.num}>
@@ -113,7 +113,7 @@ export const DesignProcess: React.FC = () => {
                   {/* Step Metadata & Description */}
                   <div className="flex flex-col items-center">
                     <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-muted group-hover:text-[#89AACC] transition-colors mb-2">
-                      STEP {step.num}
+                      PHASE {step.num}
                     </span>
                     <h3 className="text-lg font-medium text-text-primary tracking-tight mb-2 group-hover:text-white transition-colors">
                       {step.title}
@@ -125,7 +125,7 @@ export const DesignProcess: React.FC = () => {
                 </motion.div>
 
                 {/* Connecting Arrow between steps */}
-                {idx < DESIGN_PROCESS_STEPS.length - 1 && (
+                {idx < ENGINEERING_STEPS.length - 1 && (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -147,7 +147,7 @@ export const DesignProcess: React.FC = () => {
 
         {/* Mobile & Tablet Layout (<1024px): Responsive card grid with seamless theme tokens */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:hidden">
-          {DESIGN_PROCESS_STEPS.map((step, idx) => {
+          {ENGINEERING_STEPS.map((step, idx) => {
             const Icon = step.icon;
             return (
               <motion.div
@@ -161,7 +161,7 @@ export const DesignProcess: React.FC = () => {
                   ease: [0.25, 0.1, 0.25, 1],
                 }}
                 className={`group relative bg-surface border border-stroke hover:border-[#89AACC]/40 rounded-2xl p-5 sm:p-6 transition-all duration-300 flex items-start gap-4 ${
-                  idx === DESIGN_PROCESS_STEPS.length - 1 && DESIGN_PROCESS_STEPS.length % 2 !== 0
+                  idx === ENGINEERING_STEPS.length - 1 && ENGINEERING_STEPS.length % 2 !== 0
                     ? 'sm:col-span-2'
                     : ''
                 }`}
@@ -182,7 +182,7 @@ export const DesignProcess: React.FC = () => {
                 <div className="relative z-10 flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-1">
                     <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#89AACC]">
-                      STEP {step.num}
+                      PHASE {step.num}
                     </span>
                   </div>
                   <h3 className="text-base sm:text-lg font-medium text-text-primary tracking-tight mb-1 group-hover:text-white transition-colors">

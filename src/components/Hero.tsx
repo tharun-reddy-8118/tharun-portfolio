@@ -104,9 +104,20 @@ export const Hero: React.FC<HeroProps> = ({ isLoadingComplete, onContactClick })
 
       {/* Hero Content (centered, z-10) */}
       <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center pt-24 pb-20">
-        {/* Eyebrow */}
-        <div className="blur-in text-xs text-muted uppercase tracking-[0.3em] mb-8 font-medium">
-          {USER_INFO.eyebrow}
+        {/* Eyebrow & Live Engineering Telemetry Pill */}
+        <div className="blur-in flex flex-col items-center gap-3 mb-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface/80 border border-white/10 backdrop-blur-md shadow-lg text-[11px] font-mono">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            </span>
+            <span className="text-text-primary font-medium tracking-wide">Available for SWE Roles</span>
+            <span className="text-muted/40">•</span>
+            <span className="text-[#89AACC] hidden sm:inline">Python · FastAPI · PySpark · Distributed Systems</span>
+          </div>
+          <span className="text-[11px] text-muted uppercase tracking-[0.3em] font-medium">
+            {USER_INFO.eyebrow}
+          </span>
         </div>
 
         {/* Name */}
@@ -123,7 +134,7 @@ export const Hero: React.FC<HeroProps> = ({ isLoadingComplete, onContactClick })
           >
             {ROLES[roleIndex]}
           </span>
-          <span>based in Hyderabad, IN.</span>
+          <span>based in Hyderabad, Telangana.</span>
         </div>
 
         {/* Description */}
@@ -133,14 +144,14 @@ export const Hero: React.FC<HeroProps> = ({ isLoadingComplete, onContactClick })
 
         {/* CTA Buttons */}
         <div className="blur-in inline-flex items-center gap-4 flex-wrap justify-center">
-          {/* Solid "See Works" Button */}
+          {/* Solid "View Projects" Button */}
           <a
             href="#works"
             className="group relative inline-flex items-center justify-center rounded-full text-sm font-medium p-[1.5px] transition-transform duration-300 hover:scale-105"
           >
             <span className="absolute inset-0 rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative z-10 rounded-full px-7 py-3.5 bg-text-primary text-bg group-hover:bg-bg group-hover:text-text-primary transition-colors duration-300 font-medium">
-              See Works
+              View Projects
             </span>
           </a>
 

@@ -5,7 +5,7 @@ interface LoadingScreenProps {
   onComplete: () => void;
 }
 
-const words = ['Research', 'Design', 'Prototype', 'Engineer'];
+const words = ['Architect', 'Build', 'Optimize', 'Deploy'];
 
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   const [count, setCount] = useState(0);
@@ -79,7 +79,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="text-xs text-muted uppercase tracking-[0.3em] font-medium"
         >
-          Varun Surya
+          Tharun Reddy
         </motion.span>
         <span className="text-xs text-muted/60 uppercase tracking-[0.2em]">
           v2.6 &bull; 2026
@@ -106,8 +106,8 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
       {/* Bottom Bar: Counter on Bottom-Right */}
       <div className="flex items-end justify-between w-full pb-4">
-        <div className="text-xs text-muted/60 max-w-[260px] hidden sm:block">
-          Product &amp; UI/UX Portfolio &mdash; Varun Surya Vemula
+        <div className="text-xs text-muted/60 max-w-[280px] hidden sm:block">
+          Software Engineering Portfolio &mdash; Tharun Kumar Reddy
         </div>
         <div className="ml-auto text-right">
           <div className="text-6xl md:text-8xl lg:text-9xl font-display text-text-primary tabular-nums tracking-tight leading-none">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, HeartPulse, Compass, Layers } from 'lucide-react';
+import { Server, Activity, Database, BarChart3 } from 'lucide-react';
+import { USER_INFO } from '../data/portfolioData';
 
 interface FeatureCard {
   icon: React.ReactNode;
@@ -10,24 +11,24 @@ interface FeatureCard {
 
 const FEATURES: FeatureCard[] = [
   {
-    icon: <Sparkles className="w-5 h-5 text-[#89AACC]" />,
-    title: '1.5+ year shipping product',
-    description: 'End-to-end UI/UX across healthcare, enterprise dashboards and mobile apps.',
+    icon: <Server className="w-5 h-5 text-[#89AACC]" />,
+    title: 'Scalable Backend Architectures',
+    description: 'Engineered production microservices using Python, FastAPI, and PostgreSQL with low-latency REST and GraphQL APIs.',
   },
   {
-    icon: <HeartPulse className="w-5 h-5 text-[#89AACC]" />,
-    title: 'Healthcare specialist',
-    description: 'Radiology, kidney health, claims and hospital operations — designed with clinicians, not for them.',
+    icon: <Activity className="w-5 h-5 text-[#89AACC]" />,
+    title: 'Healthcare Systems & HIS Sync',
+    description: 'Automated ABHA/UHID kiosk registration, dynamic AI queue routing (QMS), and hospital information system synchronization.',
   },
   {
-    icon: <Compass className="w-5 h-5 text-[#89AACC]" />,
-    title: 'Strategy → Visuals',
-    description: 'UX strategy, IA, wireframes, prototypes and pixel-precise visual design.',
+    icon: <Database className="w-5 h-5 text-[#89AACC]" />,
+    title: 'Distributed Data & PySpark ETL',
+    description: 'Built distributed pipelines on Azure Databricks to ingest and transform large-scale EHR and operational datasets.',
   },
   {
-    icon: <Layers className="w-5 h-5 text-[#89AACC]" />,
-    title: 'Design systems',
-    description: 'Reusable, themeable component libraries that scale with engineering teams.',
+    icon: <BarChart3 className="w-5 h-5 text-[#89AACC]" />,
+    title: 'Database Tuning & Operational Analytics',
+    description: 'Optimized PostgreSQL queries for 30% latency reduction and delivered 18+ enterprise MIS Tableau dashboards.',
   },
 ];
 
@@ -57,16 +58,16 @@ export const About: React.FC = () => {
 
             {/* Main Title */}
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-light text-text-primary tracking-tight leading-[1.08] mb-6">
-              I design calm, <br />
+              I engineer resilient, <br />
               <span className="font-display italic text-transparent bg-clip-text bg-gradient-to-r from-[#89AACC] to-[#4E85BF]">
-                human-first
+                high-scale
               </span> <br />
-              products.
+              systems.
             </h2>
 
             {/* Description */}
             <p className="text-sm md:text-base text-muted font-light leading-relaxed max-w-md">
-              I&apos;m Varun &mdash; a product designer focused on healthcare and enterprise software. I believe interfaces should reduce the cognitive load of complex work, not add to it. I work closely with engineers, clinicians and operators to ship things that actually get used.
+              {USER_INFO.bio}
             </p>
           </motion.div>
 

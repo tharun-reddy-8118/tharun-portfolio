@@ -1,5 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 299.93 278.61">
-  <!-- Generator: Adobe Illustrator 30.1.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 136)  -->
-  <path d="M74.63,17.55c4.74.79,10.52,5.83,13.33,9.67l78.18,124.33,35.57-54.91c2.63-3.35,8.52-9.09,12.91-9.09h64.5c-1.28,4.12-4.26,8.23-6.58,11.92-29.28,46.4-58.95,92.97-89.39,138.61-2.82,4.23-11.28,18.42-14.47,20.53-.98.65-1.61,1.29-2.93.89L13.13,17.55h61.5Z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="logo-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#0B0F19" />
+      <stop offset="100%" stopColor="#05070B" />
+    </linearGradient>
+    <linearGradient id="logo-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#89AACC" stop-opacity="0.8" />
+      <stop offset="50%" stopColor="#4E85BF" stop-opacity="0.3" />
+      <stop offset="100%" stopColor="#1E293B" stop-opacity="0.6" />
+    </linearGradient>
+    <linearGradient id="logo-metallic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#A8C7E8" />
+      <stop offset="35%" stopColor="#FFFFFF" />
+      <stop offset="70%" stopColor="#6CA3DA" />
+      <stop offset="100%" stopColor="#3B71AC" />
+    </linearGradient>
+    <radialGradient id="logo-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#4E85BF" stop-opacity="0.35" />
+      <stop offset="100%" stopColor="#4E85BF" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <circle cx="32" cy="32" r="28" fill="url(#logo-glow)" />
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#logo-bg)" stroke="url(#logo-border)" stroke-width="2.5" />
+  <rect x="4" y="4" width="56" height="56" rx="13" stroke="#FFFFFF" stroke-opacity="0.06" stroke-width="1" />
+
+  <path d="M15 19H49" stroke="url(#logo-metallic)" stroke-width="5.5" stroke-linecap="round" />
+  <path d="M27 19V47" stroke="url(#logo-metallic)" stroke-width="5.5" stroke-linecap="round" />
+  <path d="M27 28.5H41C45.2 28.5 45.2 38 41 38H27" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M38.5 38L47 47" stroke="url(#logo-metallic)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="49" cy="19" r="2" fill="#89AACC" />
 </svg>

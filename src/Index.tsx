@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import { LoadingScreen } from './components/LoadingScreen';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { Stats } from './components/Stats';
 import { SelectedWorks } from './components/SelectedWorks';
 import { About } from './components/About';
 import { DesignProcess } from './components/DesignProcess';
@@ -11,13 +12,10 @@ import { Experience } from './components/Experience';
 import { Explorations } from './components/Explorations';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
-import { ProjectModal } from './components/ProjectModal';
-import { Project } from './types';
 
 export const Index: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const handleLoadingComplete = useCallback(() => {
     setIsLoading(false);
@@ -53,39 +51,35 @@ export const Index: React.FC = () => {
           onContactClick={handleContactClick}
         />
 
-        {/* Section 3: Selected Works */}
-        <SelectedWorks
-          onProjectClick={(project) => setSelectedProject(project)}
-        />
+        {/* Section: Metrics & Impact */}
+        <Stats />
+
+        {/* Section 3: Selected Works (Routes to dedicated project pages) */}
+        <SelectedWorks />
 
         {/* Section 4: About */}
         <About />
 
-        {/* Section 5: Design Process */}
+        {/* Section 5: Engineering Lifecycle */}
         <DesignProcess />
 
-        {/* Section 6: Tool Kit */}
+        {/* Section 6: Technical Stack */}
         <ToolKit />
 
-        {/* Section 7: Experience */}
+        {/* Section 7: Experience & Career Hub */}
         <Experience />
 
-        {/* Section 8: Explorations (Parallax Gallery) */}
+        {/* Section 8: Systems & Architecture Console */}
         <Explorations />
       </main>
 
-      {/* Section 7: Contact / Footer */}
+      {/* Section 9: Contact / Footer */}
       <Footer />
 
-      {/* Interactive Modals */}
+      {/* Interactive Resume Modal */}
       <ResumeModal
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}
-      />
-
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
       />
     </div>
   );

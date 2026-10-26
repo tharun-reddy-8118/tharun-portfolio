@@ -1,3 +1,35 @@
+export interface ProjectArchitectureComponent {
+  title: string;
+  description: string;
+  tech: string;
+}
+
+export interface ProjectEndpoint {
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'WS' | 'QUERY';
+  path: string;
+  desc: string;
+}
+
+export interface ProjectMetric {
+  label: string;
+  value: string;
+  desc: string;
+}
+
+export interface ProjectChallenge {
+  challenge: string;
+  solution: string;
+}
+
+export interface KioskVariant {
+  name: string;
+  badge: string;
+  headline: string;
+  description: string;
+  features: string[];
+  metrics: { label: string; value: string }[];
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -8,30 +40,27 @@ export interface Project {
   image: string;
   video?: string;
   externalLink?: string;
+  github?: string;
   description?: string;
-  span: 5 | 7;
+  highlights?: string[];
+  span: 5 | 7 | 12;
   link?: string;
-}
-
-export interface JournalEntry {
-  id: string;
-  title: string;
-  category: string;
-  date: string;
-  readTime: string;
-  image: string;
-  url?: string;
-  summary?: string;
-  fullContent?: string;
-}
-
-export interface ExplorationItem {
-  id: string;
-  title: string;
-  category: string;
-  image: string;
-  rotation: number;
-  description: string;
+  role?: string;
+  timeline?: string;
+  clientOrOrg?: string;
+  overview?: string;
+  problemStatement?: string;
+  kioskVariants?: KioskVariant[];
+  keyComponents?: ProjectArchitectureComponent[];
+  workflow?: string[];
+  endpoints?: ProjectEndpoint[];
+  metrics?: ProjectMetric[];
+  challenges?: ProjectChallenge[];
+  codeSnippet?: {
+    language: string;
+    filename: string;
+    code: string;
+  };
 }
 
 export interface StatItem {
@@ -47,4 +76,17 @@ export interface ExperienceItem {
   period: string;
   location: string;
   bullets: string[];
+}
+
+export interface EducationItem {
+  degree: string;
+  institution: string;
+  period: string;
+  details?: string;
+}
+
+export interface AchievementItem {
+  title: string;
+  detail: string;
+  badge?: string;
 }

@@ -4,179 +4,240 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface ToolItem {
   id: string;
   name: string;
-  category: 'Design' | 'Creative' | 'AI & Code';
+  category: 'Backend & DB' | 'Data & Cloud' | 'Languages & Tools';
   tag: string;
   desc: string;
+  productionMetric?: string;
   icon: React.ReactNode;
 }
 
 const TOOLS: ToolItem[] = [
   {
-    id: 'figma',
-    name: 'Figma',
-    category: 'Design',
-    tag: 'UI / UX',
-    desc: 'Systemic interface design & cross-functional handoff',
-    icon: (
-      <svg viewBox="0 0 38 57" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
-        <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE" />
-        <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83" />
-        <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262" />
-        <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E" />
-        <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF" />
-      </svg>
-    ),
-  },
-  {
-    id: 'framer',
-    name: 'Framer',
-    category: 'Design',
-    tag: 'Web & Code',
-    desc: 'High-fidelity responsive layouts & interaction design',
+    id: 'python',
+    name: 'Python',
+    category: 'Languages & Tools',
+    tag: 'Core Lang',
+    desc: 'Scalable backend services, distributed ETL scripts, and data engine logic',
+    productionMetric: 'Microservices & Daemons',
     icon: (
       <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
-        <path d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z" fill="#0055FF" />
+        <path d="M11.9 2c-4.2 0-3.9 1.8-3.9 1.8l.04 1.9h4v.6H6.1S3 6 3 10.3s2.7 4.1 2.7 4.1h1.6v-2.3c0-2.6 2.3-2.5 2.3-2.5h3.9c.7 0 1.2-.5 1.2-1.2V4.4c0-1.8-2.8-2.4-2.8-2.4zm-1.8 1.4a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6z" fill="#387EB8" />
+        <path d="M12.1 22c4.2 0 3.9-1.8 3.9-1.8l-.04-1.9h-4v-.6h5.9s3.1.3 3.1-4-2.7-4.1-2.7-4.1h-1.6v2.3c0 2.6-2.3 2.5-2.3 2.5H10.5c-.7 0-1.2.5-1.2 1.2v6c0 1.8 2.8 2.4 2.8 2.4zm1.8-1.4a.8.8 0 1 1 0-1.6.8.8 0 0 1 0 1.6z" fill="#FFE052" />
       </svg>
     ),
   },
   {
-    id: 'protopie',
-    name: 'Protopie',
-    category: 'Design',
-    tag: 'Prototype',
-    desc: 'Sensor-driven micro-interactions & conditional logic',
+    id: 'fastapi',
+    name: 'FastAPI',
+    category: 'Backend & DB',
+    tag: 'Web Framework',
+    desc: 'High-throughput async APIs, auto-docs, and microservices for healthcare',
+    productionMetric: '< 65ms P95 Response SLA',
     icon: (
       <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
-        <path d="M12 3L3 8.5L12 14L21 8.5L12 3Z" fill="#FF6154" />
-        <path d="M3 13.5L12 19L21 13.5" stroke="#FF6154" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="12" cy="12" r="10" fill="#059669" />
+        <path d="M13 3L6 13h5l-2 8 9-11h-5l2-7z" fill="#FFFFFF" />
       </svg>
     ),
   },
   {
-    id: 'rive',
-    name: 'Rive',
-    category: 'Design',
-    tag: 'Interactive',
-    desc: 'Runtime interactive state-machine graphics & physics',
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
-        <path d="M5 4h8a5 5 0 0 1 3.5 8.5L20 20h-4.5l-3-7H9v7H5V4zm4 3.5v3h4a1.5 1.5 0 0 0 0-3H9z" fill="#F45F43" />
-      </svg>
-    ),
-  },
-  {
-    id: 'mobbin',
-    name: 'Mobbin',
-    category: 'Creative',
-    tag: 'Research',
-    desc: 'Empirical UX benchmarking across top iOS & web products',
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
-        <rect width="24" height="24" rx="6" fill="#18181B" stroke="#27272A" strokeWidth="1" />
-        <path d="M6.5 15V9H9l3 4.2L15 9h2.5v6H15.5v-3.5L12.5 15h-1L8.5 11.5V15H6.5z" fill="#FFFFFF" />
-      </svg>
-    ),
-  },
-  {
-    id: 'freepik',
-    name: 'Freepik',
-    category: 'Creative',
-    tag: 'Assets',
-    desc: 'High-res curated vectors, 3D assets & visual mockups',
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
-        <rect width="24" height="24" rx="6" fill="#1273EB" />
-        <path d="M7 6h10v3H10.5v2.5H16v3h-5.5V18H7V6z" fill="#FFFFFF" />
-      </svg>
-    ),
-  },
-  {
-    id: 'dribbble',
-    name: 'Dribbble',
-    category: 'Creative',
-    tag: 'Inspiration',
-    desc: 'Emerging visual aesthetics, trends & design experiments',
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
-        <path fill="#EA4C89" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.72 8.9c-.83-.24-2.82-.76-5.46-.35-.11-.25-.22-.51-.35-.77-.28-.56-.59-1.12-.93-1.68 3.51-1.39 4.95-3.08 5.09-3.26 1.05 1.57 1.65 3.73 1.65 6.06zm-7.72-6.9c.02 0 .04 0 .06 0-.25.33-1.64 2.05-5.06 3.42C8.36 4.7 10.08 4 12 4zm-6.2 4.41c3.15-1.25 4.54-2.8 4.79-3.11-2.91.89-5.11 3.26-5.83 6.22 0-.01.3-.87 1.04-3.11zm-.79 4.78c.03.01.07.03.11.04 2.92.83 5.48.51 6.32.37.07.18.14.36.21.54.19.49.36.98.51 1.48-3.79 1.15-7.09 1.08-7.23 1.07.01-.89.04-1.8.08-3.5zm7.9 7.8c-.89.01-1.78-.1-2.63-.35.34-.34 2.87-3.07 3.51-5.69.75.21 1.58.4 2.47.57-.46 3.03-1.87 5.09-3.35 5.47zm4.33-1.69c-.86-.17-1.65-.35-2.37-.55.57-2.45-.19-4.73-.24-4.88 2.42-.4 4.31.06 5.08.28-.43 2.06-1.32 3.86-2.47 5.15z" />
-      </svg>
-    ),
-  },
-  {
-    id: 'canva',
-    name: 'Canva',
-    category: 'Creative',
-    tag: 'Graphics',
-    desc: 'Rapid stakeholder presentations & editorial decks',
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
-        <rect width="24" height="24" rx="6" fill="url(#canva-grad)" />
-        <defs>
-          <linearGradient id="canva-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#00C4CC" />
-            <stop offset="1" stopColor="#7D2AE8" />
-          </linearGradient>
-        </defs>
-        <path d="M13.2 8.5c-.8-.4-1.7-.5-2.6-.5-3 0-5 2-5 5s2 4.6 4.8 4.6c1.5 0 2.7-.6 3.4-1.5l-1.5-1.2c-.5.6-1.2.9-1.9.9-1.5 0-2.5-1-2.5-2.7 0-1.8 1.1-2.8 2.6-2.8.7 0 1.3.2 1.7.6l1-2.4z" fill="#FFF" />
-      </svg>
-    ),
-  },
-  {
-    id: 'claude',
-    name: 'Claude',
-    category: 'AI & Code',
-    tag: 'LLM & IA',
-    desc: 'Information architecture critique & design reasoning',
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
-        <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93M2 7l20 10M2 17l20-10" stroke="#CC785C" strokeWidth="2.2" strokeLinecap="round" />
-      </svg>
-    ),
-  },
-  {
-    id: 'cursor',
-    name: 'Cursor',
-    category: 'AI & Code',
-    tag: 'AI Editor',
-    desc: 'Rapid code prototyping & design-system implementation',
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
-        <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" fill="#18181B" stroke="#52525B" strokeWidth="1.2" />
-        <path d="M12 2l9 5-9 5-9-5 9-5z" fill="#27272A" />
-        <path d="M12 12v10l9-5V7l-9 5z" fill="#3F3F46" />
-        <path d="M12 12L3 7v10l9 5V12z" fill="#18181B" />
-        <path d="M12 7l4.5 2.5L12 12 7.5 9.5 12 7z" fill="#A1A1AA" />
-      </svg>
-    ),
-  },
-  {
-    id: 'ai',
-    name: 'AI',
-    category: 'AI & Code',
-    tag: 'Gen AI',
-    desc: 'Generative ideation, design research & content synthesis',
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
-        <path d="M21.5 10.4c-.2-1.4-1.2-2.5-2.5-2.9-.3-.8-.9-1.5-1.7-1.9-1.2-.7-2.7-.6-3.8.1-.5-.5-1.3-.9-2.1-.9-1.4 0-2.6.9-3 2.2-.8.1-1.6.5-2.1 1.2-.8 1-1 2.4-.5 3.6-.4.5-.7 1.2-.7 1.9 0 1.5.9 2.8 2.2 3.3.1.8.6 1.6 1.3 2.1 1.1.8 2.6.8 3.7.1.5.6 1.3 1 2.2 1 1.4 0 2.7-.9 3.1-2.2.8-.1 1.5-.5 2-1.1.9-1.1 1-2.5.5-3.8.4-.5.7-1.2.7-1.8 0-.4 0-.7-.1-1z" stroke="#10A37F" strokeWidth="1.6" strokeLinejoin="round" />
-        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke="#10A37F" strokeWidth="1.6" />
-      </svg>
-    ),
-  },
-  {
-    id: 'supabase',
-    name: 'Supabase',
-    category: 'AI & Code',
+    id: 'postgresql',
+    name: 'PostgreSQL',
+    category: 'Backend & DB',
     tag: 'Database',
-    desc: 'Functional mock databases & authentication backends',
+    desc: 'Query execution tuning, B-tree indexing, and connection pool optimization',
+    productionMetric: '30% Latency Reduction',
     icon: (
       <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
-        <path d="M13.5 2L3 14.5h8.5L10.5 22 21 9.5h-8.5L13.5 2z" fill="#3ECF8E" />
+        <path d="M12 2C6.5 2 3 5.5 3 10.5c0 3.2 1.8 6.1 4.5 7.8V22l3.5-1.8h2l3.5 1.8v-3.7c2.7-1.7 4.5-4.6 4.5-7.8C21 5.5 17.5 2 12 2z" fill="#336791" />
+        <path d="M12 5c-3 0-5 2-5 4.5 0 2 1.5 3.5 3.5 3.5h3c2 0 3.5-1.5 3.5-3.5C17 7 15 5 12 5z" fill="#FFFFFF" opacity="0.3" />
+      </svg>
+    ),
+  },
+  {
+    id: 'pyspark',
+    name: 'PySpark',
+    category: 'Data & Cloud',
+    tag: 'Distributed ETL',
+    desc: 'Distributed data ingestion, transformation, and large-scale batch processing',
+    productionMetric: '500K+ Daily Records',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
+        <path d="M12 2l2.5 5.5L20 9l-4.5 4 1.5 6-5-3.5L7 19l1.5-6L4 9l5.5-1.5L12 2z" fill="#E25A1C" />
+      </svg>
+    ),
+  },
+  {
+    id: 'azure-databricks',
+    name: 'Azure Databricks',
+    category: 'Data & Cloud',
+    tag: 'Data Platform',
+    desc: 'Distributed analytics workspace for structured EHR & hospital operational pipelines',
+    productionMetric: 'Delta Lake Lakehouse',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
+        <path d="M12 2L2 7l10 5 10-5-10-5zm0 8L2 15l10 5 10-5-10-5z" fill="#FF3621" />
+      </svg>
+    ),
+  },
+  {
+    id: 'graphql',
+    name: 'GraphQL & Strawberry',
+    category: 'Backend & DB',
+    tag: 'API Architecture',
+    desc: 'Type-safe schema resolution, JWT authorization, and real-time query contracts',
+    productionMetric: 'Zero N+1 Query Batching',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
+        <path d="M12 2l8.7 5v10L12 22l-8.7-5V7L12 2z" stroke="#E10098" strokeWidth="2" strokeLinejoin="round" />
+        <circle cx="12" cy="2" r="2" fill="#E10098" />
+        <circle cx="20.7" cy="7" r="2" fill="#E10098" />
+        <circle cx="20.7" cy="17" r="2" fill="#E10098" />
+        <circle cx="12" cy="22" r="2" fill="#E10098" />
+        <circle cx="3.3" cy="17" r="2" fill="#E10098" />
+        <circle cx="3.3" cy="7" r="2" fill="#E10098" />
+        <path d="M12 6l5 3v6l-5 3-5-3V9l5-3z" fill="#E10098" opacity="0.3" />
+      </svg>
+    ),
+  },
+  {
+    id: 'duckdb',
+    name: 'DuckDB',
+    category: 'Backend & DB',
+    tag: 'Analytical SQL',
+    desc: 'Embedded columnar SQL engine driving natural-language clinical queries',
+    productionMetric: '< 15ms Columnar Scans',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
+        <rect width="24" height="24" rx="6" fill="#FFF000" />
+        <circle cx="12" cy="12" r="7" fill="#000000" />
+        <circle cx="10" cy="10" r="2" fill="#FFF000" />
+      </svg>
+    ),
+  },
+  {
+    id: 'azure',
+    name: 'Microsoft Azure',
+    category: 'Data & Cloud',
+    tag: 'Cloud Platform',
+    desc: 'Enterprise cloud hosting, container registries, data lakes, and secure network tiers',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
+        <path d="M13.5 2.5l-6 10.5 4 4.5 8.5-12.5H13.5zm-8 12l2.5 4.5H20l-4-5-8.5.5z" fill="#0078D4" />
+      </svg>
+    ),
+  },
+  {
+    id: 'docker',
+    name: 'Docker',
+    category: 'Data & Cloud',
+    tag: 'Containerization',
+    desc: 'Isolated, production-grade microservice containers and reproducible environments',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
+        <path d="M4 10h3v3H4zm4 0h3v3H8zm4 0h3v3h-3zm4 0h3v3h-3zm-8-4h3v3H8zm4 0h3v3h-3zm4 0h3v3h-3z" fill="#2496ED" />
+        <path d="M22 12c-.5-1.5-2-2-3-2-.5 0-1 .2-1.5.5C16.5 9 14 9 12 11H2c0 4 3 8 9 8 7 0 9-4 10-5 .5-.3.8-.7 1-1.2.2-.3 0-.6 0-.8z" fill="#2496ED" />
+      </svg>
+    ),
+  },
+  {
+    id: 'react',
+    name: 'React.js',
+    category: 'Languages & Tools',
+    tag: 'Frontend UI',
+    desc: 'Responsive user interfaces for admin portals, kiosk UIs, and analytical dashboards',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
+        <ellipse cx="12" cy="12" rx="9" ry="3.5" stroke="#61DAFB" strokeWidth="1.5" transform="rotate(30 12 12)" />
+        <ellipse cx="12" cy="12" rx="9" ry="3.5" stroke="#61DAFB" strokeWidth="1.5" transform="rotate(90 12 12)" />
+        <ellipse cx="12" cy="12" rx="9" ry="3.5" stroke="#61DAFB" strokeWidth="1.5" transform="rotate(150 12 12)" />
+        <circle cx="12" cy="12" r="1.8" fill="#61DAFB" />
+      </svg>
+    ),
+  },
+  {
+    id: 'tableau',
+    name: 'Tableau & BI',
+    category: 'Data & Cloud',
+    tag: 'Analytics & MIS',
+    desc: '18+ operational dashboards mapping revenue, uptime, and patient throughput',
+    productionMetric: '18+ Executive Dashboards',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
+        <path d="M11 2h2v4h-2zm0 16h2v4h-2zM2 11h4v2H2zm16 0h4v2h-4zM6 6h2v2H6zm10 0h2v2h-2zm0 10h2v2h-2zm-10 0h2v2H6z" fill="#E97627" />
+        <path d="M10.5 7h3v10h-3zM7 10.5h10v3H7z" fill="#E97627" />
+      </svg>
+    ),
+  },
+  {
+    id: 'django',
+    name: 'Django',
+    category: 'Backend & DB',
+    tag: 'Full-Stack ORM',
+    desc: 'Robust enterprise Python web framework with secure ORM and authentication suites',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
+        <rect width="24" height="24" rx="6" fill="#092E20" />
+        <path d="M11 5h3v8.5c-.8.3-1.6.5-2.5.5-2.5 0-3.8-1.4-3.8-3.7 0-2.4 1.5-3.8 3.3-3.8.5 0 .9.1 1.2.2V5zm0 3.3c-.2-.1-.5-.1-.7-.1-.9 0-1.6.7-1.6 2 0 1.2.6 1.9 1.5 1.9.3 0 .6 0 .8-.1V8.3z" fill="#44B78B" />
+      </svg>
+    ),
+  },
+  {
+    id: 'sql',
+    name: 'SQL & Query Tuning',
+    category: 'Backend & DB',
+    tag: 'Database Theory',
+    desc: 'Complex joins, indexing strategies, CTEs, and execution plan optimization',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
+        <ellipse cx="12" cy="5" rx="8" ry="3" stroke="#89AACC" strokeWidth="1.8" />
+        <path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5" stroke="#89AACC" strokeWidth="1.8" />
+        <path d="M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7" stroke="#89AACC" strokeWidth="1.8" />
+      </svg>
+    ),
+  },
+  {
+    id: 'git-actions',
+    name: 'Git & GitHub Actions',
+    category: 'Languages & Tools',
+    tag: 'CI/CD & VCS',
+    desc: 'Automated testing, linting checks, build pipelines, and version control',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
+        <path d="M19.5 9.5a2.5 2.5 0 0 0-2.3 1.5H12a3 3 0 0 0-3 3v2.2a2.5 2.5 0 1 0 2 0V14a1 1 0 0 1 1-1h5.2a2.5 2.5 0 1 0 2.3-3.5z" fill="#F05032" />
+      </svg>
+    ),
+  },
+  {
+    id: 'postman',
+    name: 'Postman & REST',
+    category: 'Languages & Tools',
+    tag: 'API Testing',
+    desc: 'End-to-end API regression testing, automated test collections, and contract validation',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
+        <circle cx="12" cy="12" r="10" fill="#FF6C37" />
+        <path d="M16 11l-4-4v3H8v2h4v3l4-4z" fill="#FFFFFF" />
+      </svg>
+    ),
+  },
+  {
+    id: 'linux',
+    name: 'Linux & Shell',
+    category: 'Languages & Tools',
+    tag: 'OS & Systems',
+    desc: 'Server configuration, process management, shell scripting, and deployment environments',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7" fill="none">
+        <path d="M12 2C9 2 7 5 7 9c0 3 1.5 5 2 6l-2 3c-.5.8 0 1.5 1 1.5h8c1 0 1.5-.7 1-1.5l-2-3c.5-1 2-3 2-6 0-4-2-7-5-7z" fill="#FCC624" />
+        <circle cx="10" cy="7" r="1" fill="#000" />
+        <circle cx="14" cy="7" r="1" fill="#000" />
       </svg>
     ),
   },
 ];
 
-type CategoryFilter = 'All' | 'Design' | 'Creative' | 'AI & Code';
+type CategoryFilter = 'All' | 'Backend & DB' | 'Data & Cloud' | 'Languages & Tools';
 
 export const ToolKit: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<CategoryFilter>('All');
@@ -207,20 +268,20 @@ export const ToolKit: React.FC = () => {
             <div className="flex items-center gap-3 mb-6">
               <span className="w-8 h-px bg-stroke" />
               <span className="text-xs text-muted uppercase tracking-[0.3em] font-medium">
-                Tool Kit
+                Technical Stack
               </span>
             </div>
 
             {/* Editorial Heading */}
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-light text-text-primary tracking-tight leading-[1.08] mb-4">
-              My daily{' '}
+              My engineering{' '}
               <span className="font-display italic text-transparent bg-clip-text bg-gradient-to-r from-[#89AACC] to-[#4E85BF]">
-                arsenal.
+                toolkit.
               </span>
             </h2>
 
             <p className="text-sm md:text-base text-muted font-light leading-relaxed max-w-lg">
-              A curated stack across product design, high-fidelity prototyping, research, generative AI, and engineering handoff.
+              A production-tested stack across backend frameworks, distributed data engineering, databases, cloud, and operational analytics.
             </p>
           </motion.div>
 
@@ -232,11 +293,11 @@ export const ToolKit: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex items-center gap-1.5 p-1 rounded-full bg-surface border border-stroke w-fit flex-wrap"
           >
-            {(['All', 'Design', 'Creative', 'AI & Code'] as CategoryFilter[]).map((tab) => (
+            {(['All', 'Backend & DB', 'Data & Cloud', 'Languages & Tools'] as CategoryFilter[]).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveFilter(tab)}
-                className={`relative px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                className={`relative px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
                   activeFilter === tab
                     ? 'text-text-primary bg-white/10 shadow-sm'
                     : 'text-muted hover:text-text-primary hover:bg-white/5'
@@ -248,7 +309,7 @@ export const ToolKit: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* 12-Tool Grid: 2 cols on mobile, 3 cols on tablet, 4 cols on desktop */}
+        {/* 16-Tool Grid */}
         <motion.div
           layout
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5"
@@ -263,7 +324,7 @@ export const ToolKit: React.FC = () => {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{
                   duration: 0.4,
-                  delay: idx * 0.03,
+                  delay: idx * 0.02,
                   ease: [0.25, 0.1, 0.25, 1],
                 }}
                 whileHover={{ y: -4 }}
@@ -290,9 +351,17 @@ export const ToolKit: React.FC = () => {
                   <h3 className="text-base sm:text-lg font-medium text-text-primary tracking-tight mb-1 group-hover:text-white transition-colors">
                     {tool.name}
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-muted font-light leading-relaxed line-clamp-2">
+                  <p className="text-[11px] sm:text-xs text-muted font-light leading-relaxed line-clamp-2 mb-2">
                     {tool.desc}
                   </p>
+
+                  {/* Production Proof Pill */}
+                  {tool.productionMetric && (
+                    <div className="pt-2 border-t border-white/5 flex items-center gap-1.5 text-[10px] font-mono text-[#89AACC]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                      <span className="truncate">{tool.productionMetric}</span>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
